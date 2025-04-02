@@ -1,0 +1,3 @@
+<%= turbo_stream.replace dom_id(@task, :form) do %>
+  <%= render "form", project: @project, task: @task %>
+<% end %>

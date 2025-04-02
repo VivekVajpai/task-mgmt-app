@@ -32,6 +32,10 @@ class TasksController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.turbo_stream
+      format.html # Fallback for non-Turbo requests
+    end
   end
 
   def update
@@ -46,14 +50,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    if @task.status == "Completed"
-      @task.destroy
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to @task.project, notice: "Task deleted successfully." }
-      end
-    else
-      redirect_to @task.project, alert: "Only completed tasks can be deleted."
+    @task.destroy
+    respond_to do |format|
+      format.turbo_stream
+      # format.html { redirect_to @task.project, notice: "Task deleted successfully." }
     end
   end
 

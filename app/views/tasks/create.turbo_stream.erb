@@ -1,9 +1,3 @@
-<!-- <turbo-stream action="append" target="tasks_list">
-  <template>
-    <%#= render @task %>
-  </template>
-</turbo-stream> -->
-
 <%= turbo_stream.prepend "tasks", partial: "tasks/task", locals:{ task: @task } %>
 <%#= turbo_stream.update "count_post" do %>
   <%#= @posts %>
