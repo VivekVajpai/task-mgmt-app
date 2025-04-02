@@ -1,5 +1,5 @@
-<%= turbo_frame_tag "task_details" do %>
-<%#= turbo_frame_tag dom_id(task, "id") do %>
+<%#= turbo_frame_tag "tasks" do %>
+<%= turbo_frame_tag dom_id(task, "id") do %>
   <div class="border p-4 mb-2 flex justify-between items-center">
     <div>
       <h3 class="font-bold"><%= task.title %></h3>

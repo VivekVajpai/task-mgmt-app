@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   def edit
     respond_to do |format|
       format.turbo_stream
-      format.html # Fallback for non-Turbo requests
+      # format.html # Fallback for non-Turbo requests
     end
   end
 
