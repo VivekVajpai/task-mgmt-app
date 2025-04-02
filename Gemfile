@@ -67,7 +67,7 @@ end
 gem 'mongoid', '~> 8.0'
 gem 'mongoid-history', '~> 0.8.0'
 gem 'hotwire-rails'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 3.1'
 gem 'dry-schema'
 gem 'dry-validation'
 gem 'dry-types'
