@@ -32,9 +32,10 @@ class TasksController < ApplicationController
   end
 
   def edit
+    # binding.pry
     respond_to do |format|
-      format.turbo_stream
-      # format.html # Fallback for non-Turbo requests
+      # format.turbo_stream
+      format.html
     end
   end
 
@@ -42,7 +43,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to @project, notice: "Task updated successfully." }
+        # format.html { redirect_to @project, notice: "Task updated successfully." }
       end
     else
       render :edit, status: :unprocessable_entity

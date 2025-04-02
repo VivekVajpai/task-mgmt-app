@@ -10,5 +10,9 @@
 <!-- Task List -->
 <h2 class="text-xl font-semibold mt-4">Tasks</h2>
 <div id="tasks">
-  <%= render @project.tasks %>
+  <% tasks = @project.tasks %>
+  <% tasks.each do |task| %>
+    <%= render partial: "tasks/task", locals: {task: task, project: @project} %>
+  <% end %>
 </div>
+<%= turbo_stream_from "task_crud" %>

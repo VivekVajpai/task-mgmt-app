@@ -1,3 +1,3 @@
-<turbo-frame id="<%= dom_id(@task, :form) %>">
+<turbo-frame id="<%= dom_id(@task, "id") %>">
   <%= render "form", project: @project, task: @task %>
 </turbo-frame>
