@@ -1,0 +1,21 @@
+<%= form_with model: [@project, @task], data: { controller: "form-toggle" } do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "border p-2 w-full", data: { action: "input->form-toggle#validateTitle" } %>
+    <span class="text-red-500" data-form-toggle-target="titleError"></span>
+  </div>
+
+  <div class="mt-2">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "border p-2 w-full" %>
+  </div>
+
+  <div class="mt-2">
+    <%= f.label :status %>
+    <%= f.select :status, ["To do", "In Progress", "Completed"], {}, class: "border p-2 w-full" %>
+  </div>
+
+  <div class="mt-4">
+    <%= f.submit class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<turbo-stream action="append" target="tasks">
+  <template>
+    <%= render partial: "tasks/task", locals: { task: @task } %>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="task_form">
+  <template>
+    <%= render partial: "tasks/form", locals: { project: @project, task: Task.new } %>
+  </template>
+</turbo-stream>
