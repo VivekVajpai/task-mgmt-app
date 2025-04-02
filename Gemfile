@@ -64,7 +64,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'mongoid', '~> 8.0'
+gem 'mongoid', '~> 9.0'
 gem 'mongoid-history', '~> 0.8.0'
 gem 'hotwire-rails'
 gem 'carrierwave', '~> 2.0'
