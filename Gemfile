@@ -71,7 +71,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'dry-schema'
 gem 'dry-validation'
 gem 'dry-types'
-gem 'faker', '3.3.1'
+gem 'faker', '3.5.1'
 
 
 
