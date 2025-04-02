@@ -9,10 +9,10 @@ class TasksController < ApplicationController
   def new
     @task = @project.tasks.new
 
-    respond_to do |format|
-      format.turbo_stream { render partial: "tasks/form", locals: { project: @project, task: @task } }
-      format.html { render partial: "tasks/form", locals: { project: @project, task: @task } }
-    end
+    # respond_to do |format|
+    #   format.turbo_stream { render partial: "tasks/form", locals: { project: @project, task: @task } }
+    #   format.html { render partial: "tasks/form", locals: { project: @project, task: @task } }
+    # end
   end
 
   def create
@@ -31,13 +31,14 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @task.update(task_params)
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to @task.project, notice: "Task updated successfully." }
+        format.html { redirect_to @project, notice: "Task updated successfully." }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -59,7 +60,8 @@ class TasksController < ApplicationController
   private
 
   def set_task
-    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
   end
 
   def set_project
