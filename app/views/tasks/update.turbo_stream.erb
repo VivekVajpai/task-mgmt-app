@@ -1,3 +1,18 @@
 <%= turbo_stream.replace dom_id(@task, "id") do %>
   <%= render "task", task: @task %>
 <% end %>
+<%= turbo_stream.update "total_task_count" do %>
+  Total Tasks in this Project => <%= @total_project_tasks %>
+<% end %>
+<%= turbo_stream.update "to_do_task_count" do %>
+  To Do Tasks Count => <%= @to_do_tasks_count %>
+<% end %>
+<%= turbo_stream.update "in_progress_task_count" do %>
+  In Progress Tasks Count => <%= @in_progress_tasks_count %>
+<% end %>
+<%= turbo_stream.update "completed_task_count" do %>
+  Completed Tasks Count => <%= @completed_tasks_count %>
+<% end %>
+<%= turbo_stream.update "progress_bar" do %>
+  Task Completion => <%= @progress_bar %>
+<% end %>

@@ -7,6 +7,11 @@ class ProjectsController < ApplicationController
 
   def show
     @tasks = @project.tasks
+    @total_project_tasks = @tasks.count
+    @to_do_tasks_count = @tasks.where(status: "To do").count
+    @in_progress_tasks_count = @tasks.where(status: "In Progress").count
+    @completed_tasks_count = @tasks.where(status: "Completed").count
+    @progress_bar = ((@completed_tasks_count.to_f/@total_project_tasks)*100).round(2)
   end
 
   def new

@@ -8,17 +8,13 @@ class TasksController < ApplicationController
 
   def new
     @task = @project.tasks.new
-
-    # respond_to do |format|
-    #   format.turbo_stream { render partial: "tasks/form", locals: { project: @project, task: @task } }
-    #   format.html { render partial: "tasks/form", locals: { project: @project, task: @task } }
-    # end
   end
 
   def create
     @task = @project.tasks.new(task_params)
     
     if @task.save
+      get_tasks_count
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to @project, notice: "Task created successfully." }
@@ -41,6 +37,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
+      get_tasks_count
       respond_to do |format|
         format.turbo_stream
         # format.html { redirect_to @project, notice: "Task updated successfully." }
@@ -52,6 +49,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
+    get_tasks_count
     respond_to do |format|
       format.turbo_stream
       # format.html { redirect_to @task.project, notice: "Task deleted successfully." }
@@ -71,5 +69,14 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :description, :status, :project_id)
+  end
+
+  def get_tasks_count
+    @tasks = @project.tasks
+    @total_project_tasks = @tasks.count
+    @to_do_tasks_count = @tasks.where(status: "To do").count
+    @in_progress_tasks_count = @tasks.where(status: "In Progress").count
+    @completed_tasks_count = @tasks.where(status: "Completed").count
+    @progress_bar = ((@completed_tasks_count.to_f/@total_project_tasks)*100).round(2)
   end
 end
