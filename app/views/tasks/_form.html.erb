@@ -1,7 +1,7 @@
 <%# task ||= @task %>
 <%# binding.pry %>
 <%#= turbo_frame_tag dom_id(task, :form) do %>
-  <div class="grid grid-cols-2" data-controller="task">
+  <div class="grid grid-cols-2 ml-2" data-controller="task">
     <%= form_with model: [@project, @task], data: { controller: "form-toggle" } do |f| %>
       <div>
         <%= f.label :title %>
